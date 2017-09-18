@@ -5,4 +5,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_dashboard">Dashboard</string>
+    <string name="firebell_logo_description">Firebell logo</string>
+    <string name="setting_address_desc">Current Address:</string>
+    <string name="setting_address_placeholder">Address appears here</string>
+    <string name="setting_button_text">Update</string>
+    <string name="settings_push_notf">Push Notification</string>
+    <string name="sett_phone_alarm">Phone Alarm Alert</string>
 </resources>
