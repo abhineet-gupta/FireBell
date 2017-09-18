@@ -34,10 +34,9 @@ public class Dashboard extends AppCompatActivity {
 
                             case R.id.action_settings:
                                 Log.d("made it","correct");
-//                                Intent secondIntent = new Intent(Dashboard.this, Settings.class);
-//                                startActivity(secondIntent);
-
-
+                                Intent secondIntent = new Intent(Dashboard.this, Settings.class);
+                                Dashboard.this.startActivity(secondIntent);
+                                Dashboard.this.finish();
                         }
                         return true;
                     }
