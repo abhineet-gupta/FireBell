@@ -25,17 +25,13 @@ public class Dashboard extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_home:
-                                Log.d("made it","correct");
-//                                Intent myIntent = new Intent(Dashboard.this, Dashboard.class);
-//                                startActivity(myIntent);
-
+                                break;
                             case R.id.action_dummy:
-
+                                break;
                             case R.id.action_settings:
-                                Log.d("made it","correct");
                                 Intent secondIntent = new Intent(Dashboard.this, Settings.class);
-                                Dashboard.this.startActivity(secondIntent);
-                                Dashboard.this.finish();
+                                startActivity(secondIntent);
+                                finish();
                         }
                         return true;
                     }

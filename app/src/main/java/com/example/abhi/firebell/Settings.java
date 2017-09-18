@@ -29,35 +29,25 @@ public class Settings extends AppCompatActivity {
                     startActivity(firstIntent);
                     finish();
                 case R.id.action_dummy:
-                    return true;
+                    break;
                 case R.id.action_settings:
-                    Intent secIntent = new Intent(Settings.this, Settings.class);
-                    startActivity(secIntent);
-                    finish();
+                    break;
             }
             return false;
         }
 
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-
-        mTextMessage = (TextView) findViewById(R.id.textViewSettAddrDescr);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+    private void displayAddress(){
         // Get stored address if it exists in storage
         Context context = getApplicationContext();
         final SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.pref_file_key), Context.MODE_PRIVATE);
 
-        //Hardcode address for testing; TODO remove hardcoded address when updated
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.pref_address_key), getString(R.string.default_address));
-        editor.commit();
+//        //Hardcode address for testing; TODO remove hardcoded address when updated
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//        editor.putString(getString(R.string.pref_address_key), getString(R.string.default_address));
+//        editor.commit();
 
         String addr_key = getString(R.string.pref_address_key);
         final String addr = sharedPref.getString(addr_key, "");
@@ -66,13 +56,34 @@ public class Settings extends AppCompatActivity {
             tv_addr.setText(addr);
         }
 
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+
+        mTextMessage = (TextView) findViewById(R.id.textViewSettAddrDescr);
+        displayAddress();
+
+        BottomNavigationView navigation =
+                (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         //set button click listener & update address in storage
         Button btnUpdate = (Button) findViewById(R.id.btSettUpdate);
         btnUpdate.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, SetAddress.class);
+                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        displayAddress();
     }
 }
