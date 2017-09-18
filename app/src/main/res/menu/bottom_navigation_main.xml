@@ -9,6 +9,7 @@
         app:showAsAction="always" />
 
     <item
+        android:title="ActionDummy"
         android:id="@+id/action_dummy"
         app:showAsAction="always" />
     <item
