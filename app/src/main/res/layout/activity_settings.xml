@@ -68,16 +68,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/btSettUpdate"
-            android:layout_alignTop="@+id/textViewSettPushNotf"
-            android:text="Switch" />
+            android:layout_alignTop="@+id/textViewSettPushNotf" />
 
         <Switch
             android:id="@+id/switchSettPhoneAlarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/switchSettPushNotf"
-            android:layout_alignTop="@+id/textViewSettPhoneAlarm"
-            android:text="Switch" />
+            android:layout_alignTop="@+id/textViewSettPhoneAlarm" />
 
     </RelativeLayout>
 

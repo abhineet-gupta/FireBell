@@ -2,22 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/action_favorites"
         android:enabled="true"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home"
-        app:showAsAction="always" />
-
+        android:icon="@drawable/firebelllicon"
+        android:title="home"
+        app:showAsAction="ifRoom" />
     <item
-        android:title=""
-        android:id="@+id/action_dummy"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_schedules"
         android:enabled="true"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="Settings"
-        app:showAsAction="always" />
+        android:icon="@drawable/firebelllicon"
+        android:title="settings"
+        app:showAsAction="ifRoom" />
 
 </menu>
