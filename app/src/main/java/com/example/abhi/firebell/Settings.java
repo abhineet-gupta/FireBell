@@ -1,5 +1,6 @@
 package com.example.abhi.firebell;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -18,8 +19,12 @@ public class Settings extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
+                    Intent firstIntent = new Intent(Settings.this, Dashboard.class);
+                    Settings.this.startActivity(firstIntent);
+                    Settings.this.finish();
+
+//                    mTextMessage.setText(R.string.title_home);
+//                    return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_dashboard);
                     return true;
