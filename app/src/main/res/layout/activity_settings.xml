@@ -8,23 +8,78 @@
     android:orientation="vertical"
     tools:context="com.example.abhi.firebell.Settings">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
+            android:id="@+id/textViewSettAddrDescr"
+            android:layout_width="177dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home" />
+            android:text="@string/setting_address_desc" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/textViewSettAddr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textViewSettAddrDescr"
+            android:layout_alignStart="@+id/textViewSettAddrDescr"
+            android:layout_below="@+id/textViewSettAddrDescr"
+            android:text="@string/setting_address_placeholder"
+            android:textColor="@android:color/holo_orange_dark" />
+
+        <Button
+            android:id="@+id/btSettUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textViewSettAddrDescr"
+            android:layout_marginEnd="40dp"
+            android:background="@android:color/holo_orange_light"
+            android:text="@string/setting_button_text" />
+
+        <TextView
+            android:id="@+id/textViewSettPushNotf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textViewSettAddr"
+            android:layout_alignStart="@+id/textViewSettAddr"
+            android:layout_below="@+id/textViewSettAddr"
+            android:layout_marginTop="47dp"
+            android:text="@string/settings_push_notf" />
+
+        <TextView
+            android:id="@+id/textViewSettPhoneAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textViewSettPushNotf"
+            android:layout_below="@+id/switchSettPushNotf"
+            android:layout_marginTop="32dp"
+            android:text="@string/sett_phone_alarm" />
+
+        <Switch
+            android:id="@+id/switchSettPushNotf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btSettUpdate"
+            android:layout_alignTop="@+id/textViewSettPushNotf"
+            android:text="Switch" />
+
+        <Switch
+            android:id="@+id/switchSettPhoneAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/switchSettPushNotf"
+            android:layout_alignTop="@+id/textViewSettPhoneAlarm"
+            android:text="Switch" />
+
+    </RelativeLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
