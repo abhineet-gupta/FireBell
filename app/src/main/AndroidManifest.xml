@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,9 +19,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Settings"
+            android:name=".SetAddress"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".SetAddress"></activity>
     </application>
 
 </manifest>
