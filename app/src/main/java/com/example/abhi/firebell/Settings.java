@@ -24,19 +24,16 @@ public class Settings extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.action_home:
                     Intent firstIntent = new Intent(Settings.this, Dashboard.class);
-                    Settings.this.startActivity(firstIntent);
-                    Settings.this.finish();
-
-//                    mTextMessage.setText(R.string.title_home);
-//                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    startActivity(firstIntent);
+                    finish();
+                case R.id.action_dummy:
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
+                case R.id.action_settings:
+                    Intent secIntent = new Intent(Settings.this, Settings.class);
+                    startActivity(secIntent);
+                    finish();
             }
             return false;
         }
