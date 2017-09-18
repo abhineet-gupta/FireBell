@@ -27,15 +27,15 @@ public class Dashboard extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.action_home:
                                 Log.d("made it","correct");
-                                Intent myIntent = new Intent(Dashboard.this, Dashboard.class);
-                                startActivity(myIntent);
+//                                Intent myIntent = new Intent(Dashboard.this, Dashboard.class);
+//                                startActivity(myIntent);
 
                             case R.id.action_dummy:
 
                             case R.id.action_settings:
                                 Log.d("made it","correct");
-                                Intent secondIntent = new Intent(Dashboard.this, Settings.class);
-                                startActivity(secondIntent);
+//                                Intent secondIntent = new Intent(Dashboard.this, Settings.class);
+//                                startActivity(secondIntent);
 
 
                         }
