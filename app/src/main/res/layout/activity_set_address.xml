@@ -19,4 +19,34 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintVertical_bias="0.253" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="296dp"
+        android:layout_height="67dp"
+        android:background="#967600"
+        android:text="GO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="336dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="296dp"
+        android:layout_height="67dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="256dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your address"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="228dp" />
+
 </android.support.constraint.ConstraintLayout>
