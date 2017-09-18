@@ -9,8 +9,10 @@
         app:showAsAction="always" />
 
     <item
+        android:title=""
         android:id="@+id/action_dummy"
         app:showAsAction="always" />
+
     <item
         android:id="@+id/action_settings"
         android:enabled="true"
