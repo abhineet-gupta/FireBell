@@ -8,4 +8,6 @@
     <color name="white">#ffffff</color>
     <color name="colorAccent">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="warningRed">#cd0000</color>
+    <color name="okayGreen">#198c19</color>
 </resources>

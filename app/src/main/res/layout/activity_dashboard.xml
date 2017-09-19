@@ -70,4 +70,25 @@
         android:layout_below="@+id/textViewFire"
         android:layout_marginTop="46dp" />
 
+    <TextView
+        android:id="@+id/textViewCOSafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAFE"
+        android:textColor="@color/okayGreen"
+        android:layout_below="@+id/textViewCarbonMonoxide"
+        android:layout_toEndOf="@+id/textViewDisplayAddress"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:id="@+id/textViewFireDanger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DANGER"
+        android:textColor="@color/warningRed"
+        android:layout_marginStart="16dp"
+        android:layout_alignBaseline="@+id/textViewCOSafe"
+        android:layout_alignBottom="@+id/textViewCOSafe"
+        android:layout_toEndOf="@+id/mapView3" />
+
 </RelativeLayout>
