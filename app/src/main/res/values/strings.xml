@@ -14,6 +14,8 @@
     <string name="title_activity_maps_homepage">Map</string>
     <string name="pref_file_key">FireBellPreference</string>
     <string name="pref_address_key">user_address</string>
+    <string name="pref_notifications_key">user_notifications</string>
+    <string name="pref_alarm_key">user_alarm</string>
     <string name="default_address">69 Bikini drive, San Andreas</string>
     <string name="enter_your_address">Enter your address</string>
     <string name="set_address_button_text">GO</string>

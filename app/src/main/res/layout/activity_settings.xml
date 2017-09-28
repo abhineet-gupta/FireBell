@@ -38,11 +38,11 @@
             android:id="@+id/btSettUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/textViewSettAddrDescr"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="22dp"
             android:background="@android:color/holo_orange_light"
-            android:text="@string/setting_button_text" />
+            android:text="@string/setting_button_text"
+            android:layout_above="@+id/textViewSettPushNotf"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/textViewSettPushNotf"
