@@ -15,8 +15,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Start home activity
-        //startActivity(new Intent(Splash.this, SetAddress.class));
+        startActivity(new Intent(Splash.this, SetAddress.class));
         // close splash activity
-        //finish();
+        finish();
     }
 }

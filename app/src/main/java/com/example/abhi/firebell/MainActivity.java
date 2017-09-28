@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         // If address is emtpy, prompt user to set it
         if (addr.equals("")) {
+            //final Intent mainIntent = new Intent(this, Dashboard.class);
             final Intent mainIntent = new Intent(this, SetAddress.class);
             startActivity(mainIntent);
             finish();
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // otherwise go to Dashboard
         else{
             final Intent mainIntent = new Intent(this, Dashboard.class);
+            //final Intent mainIntent = new Intent(this, SetAddress.class);
             startActivity(mainIntent);
             finish();
         }

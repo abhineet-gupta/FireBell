@@ -79,6 +79,8 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //SharedPreferences sharedPreferences = getSharedPreferences(fileNameString, MODE_PRIVATE);
     }
 
     @Override
