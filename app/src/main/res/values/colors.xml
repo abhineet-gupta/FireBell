@@ -10,4 +10,17 @@
     <color name="black">#000000</color>
     <color name="warningRed">#cd0000</color>
     <color name="okayGreen">#198c19</color>
+
+    <color name="newOrange">#fc7c31</color>
+    <color name="newSettings">#6d6d6d</color>
+
+    <!-- Wilko's colour scheme -->
+    <color name="steel">#627894</color>
+    <color name="bottle">#A0AEC1</color>
+    <color name="blue">#466289</color>
+    <color name="sky">#DBE8F9</color>
+    <color name="sunset">#FA6121</color>
+    <color name="newSunset">#fc7c31</color>
+    <color name="sand">#FFB739</color>
+
 </resources>
