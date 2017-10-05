@@ -21,17 +21,15 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Settings"
-            android:label="@string/title_activity_settings"
-            android:exported="true"/>
-
-        <activity android:name=".SetAddress"/>
-
+            android:exported="true"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".SetAddress" />
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard"
@@ -50,9 +48,10 @@
 
         <activity
             android:name=".MapsActivityHomepage"
-            android:label="@string/title_activity_maps_homepage">
-
-        </activity>
+            android:label="@string/title_activity_maps_homepage"></activity>
+        <activity
+            android:name=".Map"
+            android:label="@string/title_activity_map"></activity>
     </application>
 
 </manifest>

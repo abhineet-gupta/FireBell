@@ -19,4 +19,5 @@
     <string name="default_address">69 Bikini drive, San Andreas</string>
     <string name="enter_your_address">Enter your address</string>
     <string name="set_address_button_text">GO</string>
+    <string name="title_activity_map">Map</string>
 </resources>
