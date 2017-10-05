@@ -25,18 +25,19 @@ public class Settings extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.action_home:
-                    Intent homeIntent = new Intent(Settings.this, Dashboard.class);
-                    startActivity(homeIntent);
-                    finish();
                 case R.id.action_map:
                     Intent mapIntent = new Intent(Settings.this, Map.class);
                     startActivity(mapIntent);
                     finish();
+                    break;
+                case R.id.action_home:
+                    Intent homeIntent = new Intent(Settings.this, Dashboard.class);
+                    startActivity(homeIntent);
+                    finish();
+                    break;
                 case R.id.action_settings:
                     break;
             }

@@ -23,17 +23,21 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch (item.getItemId()) {
+                // map one is GOOD! it works, not mixed up
                 case R.id.action_home:
                     Intent homeIntent = new Intent(Map.this, Dashboard.class);
                     startActivity(homeIntent);
                     finish();
+                    break;
                 case R.id.action_map:
                     break;
                 case R.id.action_settings:
                     Intent settingsIntent = new Intent(Map.this, Settings.class);
                     startActivity(settingsIntent);
                     finish();
+                    break;
             }
             return false;
         }
