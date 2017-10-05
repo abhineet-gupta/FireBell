@@ -1,7 +1,11 @@
 package com.example.abhi.firebell;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,6 +18,28 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_home:
+                    Intent homeIntent = new Intent(Map.this, Dashboard.class);
+                    startActivity(homeIntent);
+                    finish();
+                case R.id.action_map:
+                    break;
+                case R.id.action_settings:
+                    Intent settingsIntent = new Intent(Map.this, Settings.class);
+                    startActivity(settingsIntent);
+                    finish();
+            }
+            return false;
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +48,11 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        BottomNavigationView navigation =
+                (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
 

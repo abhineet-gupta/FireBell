@@ -1,6 +1,7 @@
 package com.example.abhi.firebell;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,12 @@ public class SetAddress extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.pref_address_key), addr);
         editor.commit();
+
+        final Intent mainIntent = new Intent(this, Dashboard.class);
+        //final Intent mainIntent = new Intent(this, Map.class);
+        //final Intent mainIntent = new Intent(this, SetAddress.class);
+        startActivity(mainIntent);
+
         finish();
     }
 }

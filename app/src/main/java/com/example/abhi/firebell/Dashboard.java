@@ -26,11 +26,13 @@ public class Dashboard extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.action_home:
                                 break;
-                            case R.id.action_dummy:
-                                break;
+                            case R.id.action_map:
+                                Intent mapIntent = new Intent(Dashboard.this, Map.class);
+                                startActivity(mapIntent);
+                                finish();
                             case R.id.action_settings:
-                                Intent secondIntent = new Intent(Dashboard.this, Settings.class);
-                                startActivity(secondIntent);
+                                Intent settingsIntent = new Intent(Dashboard.this, Settings.class);
+                                startActivity(settingsIntent);
                                 finish();
                         }
                         return true;

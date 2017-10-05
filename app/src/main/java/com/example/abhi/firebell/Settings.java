@@ -30,11 +30,13 @@ public class Settings extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_home:
-                    Intent firstIntent = new Intent(Settings.this, Dashboard.class);
-                    startActivity(firstIntent);
+                    Intent homeIntent = new Intent(Settings.this, Dashboard.class);
+                    startActivity(homeIntent);
                     finish();
-                case R.id.action_dummy:
-                    break;
+                case R.id.action_map:
+                    Intent mapIntent = new Intent(Settings.this, Map.class);
+                    startActivity(mapIntent);
+                    finish();
                 case R.id.action_settings:
                     break;
             }
