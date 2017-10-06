@@ -18,4 +18,25 @@
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_navigation_main" />
 
+    <TextView
+        android:id="@+id/emergencyAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="25dp"
+        android:text="Alerts"
+        android:textColor="@color/white"
+        android:textSize="25pt"/>
+
+    <TextView
+        android:id="@+id/alertMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/emergencyAlert"
+        android:layout_below="@+id/emergencyAlert"
+        android:layout_marginTop="45dp"
+        android:text="No emergencies present" />
+
 </RelativeLayout>
