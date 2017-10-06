@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffd466">
+    android:background="@color/sky">
 
     <!-- Content Container -->
 
@@ -12,83 +12,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/darkNav"
+        app:itemBackground="@color/newOrange"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_navigation_main" />
 
-    <TextView
-        android:id="@+id/textViewAddress"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="14dp"
-        android:text="Your address:"
-        android:textColor="@color/darkOrange"
-        android:textSize="12dp"/>
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/firebelllogo"
+        android:tint="@color/blue"/>
 
-    <TextView
-        android:id="@+id/textViewDisplayAddress"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buttonEmergency"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="Insert Address Here"
-        android:textSize="19dp"
-        android:layout_below="@+id/textViewAddress"
-        android:layout_alignStart="@+id/textViewAddress"
-        android:textColor="@color/darkOrange"/>
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:background="@color/newSunset"
+        android:text="EMERGENCY SOS" />
 
-    <TextView
-        android:id="@+id/textViewFire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textViewDisplayAddress"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="41dp"
-        android:text="Fire:"
-        android:textColor="@color/black"
-        android:textSize="12dp"/>
+    <Button
+        android:id="@+id/buttonStatus"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_alignStart="@+id/buttonEmergency"
+        android:layout_below="@+id/imageView"
+        android:background="@color/steel"
+        android:text="Status" />
 
-    <TextView
-        android:id="@+id/textViewCarbonMonoxide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Carbon Monoxide:"
-        android:layout_marginStart="200dp"
-        android:layout_alignTop="@+id/textViewFire"
-        android:textColor="@color/black"
-        android:textSize="12dp"/>
+    <Button
+        android:id="@+id/buttonEmergencies"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_alignEnd="@+id/buttonEmergency"
+        android:layout_below="@+id/imageView"
+        android:background="@color/sand"
+        android:text="Emergencies" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView3"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/fireNews"
+        android:layout_width="145dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textViewFire"
-        android:layout_below="@+id/textViewFire"
-        android:layout_marginTop="46dp" />
-
-    <TextView
-        android:id="@+id/textViewCOSafe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SAFE"
-        android:textColor="@color/okayGreen"
-        android:layout_below="@+id/textViewCarbonMonoxide"
-        android:layout_toEndOf="@+id/textViewDisplayAddress"
-        android:layout_marginTop="11dp" />
-
-    <TextView
-        android:id="@+id/textViewFireDanger"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DANGER"
-        android:textColor="@color/warningRed"
-        android:layout_marginStart="16dp"
-        android:layout_alignBaseline="@+id/textViewCOSafe"
-        android:layout_alignBottom="@+id/textViewCOSafe"
-        android:layout_toEndOf="@+id/mapView3" />
+        android:layout_marginTop="12dp"
+        android:background="@color/blue"
+        android:text="News"
+        android:layout_below="@+id/buttonStatus"
+        android:layout_alignStart="@+id/buttonStatus" />
 
 </RelativeLayout>

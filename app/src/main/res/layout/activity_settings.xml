@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/steel">
     tools:context="com.example.abhi.firebell.Settings">
 
     <RelativeLayout
@@ -34,12 +35,13 @@
             android:text="@string/setting_address_placeholder"
             android:textColor="@android:color/holo_orange_dark" />
 
+
         <Button
             android:id="@+id/btSettUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="22dp"
-            android:background="@android:color/holo_orange_light"
+            android:background="@color/sand"
             android:text="@string/setting_button_text"
             android:layout_above="@+id/textViewSettPushNotf"
             android:layout_alignParentEnd="true" />
@@ -84,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/darkNav"
+        app:itemBackground="@color/newOrange"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_navigation_main" />

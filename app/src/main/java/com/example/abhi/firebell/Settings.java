@@ -112,7 +112,7 @@ public class Settings extends AppCompatActivity {
                     editor.putBoolean(getString(R.string.pref_notifications_key), true);
                     editor.commit();
 
-                    // Show the switch button checked status as toast message
+                    // Show the switch button checked Status as toast message
                     Toast.makeText(getApplicationContext(),
                             "Push Notifications is on", Toast.LENGTH_LONG).show();
                 }
@@ -124,7 +124,7 @@ public class Settings extends AppCompatActivity {
         editor.putBoolean(getString(R.string.pref_notifications_key), false);
         editor.commit();
 
-        // Show the switch button checked status as toast message
+        // Show the switch button checked Status as toast message
         Toast.makeText(getApplicationContext(),
                 "Push Notifications off", Toast.LENGTH_LONG).show();
     }
@@ -144,7 +144,7 @@ public class Settings extends AppCompatActivity {
                     editor.putBoolean(getString(R.string.pref_alarm_key), true);
                     editor.commit();
 
-                    // Show the switch button checked status as toast message
+                    // Show the switch button checked Status as toast message
                     Toast.makeText(getApplicationContext(),
                             "Alarms on", Toast.LENGTH_LONG).show();
                 }
@@ -156,7 +156,7 @@ public class Settings extends AppCompatActivity {
                     editor.putBoolean(getString(R.string.pref_alarm_key), false);
                     editor.commit();
 
-                    // Show the switch button checked status as toast message
+                    // Show the switch button checked Status as toast message
                     Toast.makeText(getApplicationContext(),
                             "Alarm off", Toast.LENGTH_LONG).show();
                 }

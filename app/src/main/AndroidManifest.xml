@@ -48,7 +48,12 @@
 
         <activity
             android:name=".Map"
-            android:label="@string/title_activity_map"></activity>
+            android:label="@string/title_activity_map" />
+        <activity
+            android:name=".Status"
+            android:label="@string/title_activity_status"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Emergencies"></activity>
     </application>
 
 </manifest>
