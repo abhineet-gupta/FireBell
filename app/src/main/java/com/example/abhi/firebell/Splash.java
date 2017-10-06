@@ -14,6 +14,8 @@ public class Splash extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
 
+
+
         // Start home activity
         startActivity(new Intent(Splash.this, SetAddress.class));
         // close splash activity
