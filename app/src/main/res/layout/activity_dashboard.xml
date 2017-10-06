@@ -36,6 +36,34 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"
         android:background="@color/newSunset"
-        android:text="EMERGENCY" />
+        android:text="EMERGENCY SOS" />
+
+    <Button
+        android:id="@+id/buttonStatus"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_alignStart="@+id/buttonEmergency"
+        android:layout_below="@+id/imageView"
+        android:background="@color/steel"
+        android:text="Status" />
+
+    <Button
+        android:id="@+id/buttonEmergencies"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_alignEnd="@+id/buttonEmergency"
+        android:layout_below="@+id/imageView"
+        android:background="@color/sand"
+        android:text="Emergencies" />
+
+    <Button
+        android:id="@+id/fireNews"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/blue"
+        android:text="News"
+        android:layout_below="@+id/buttonStatus"
+        android:layout_alignStart="@+id/buttonStatus" />
 
 </RelativeLayout>
