@@ -1,8 +1,13 @@
 package com.example.abhi.firebell;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -12,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,6 +25,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -81,7 +94,21 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+
+
+
         mMap = googleMap;
+
+
+        // Get stored address if it exists in storage
+        Context context = getApplicationContext();
+        final SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.pref_file_key), Context.MODE_PRIVATE);
+        String addr_key = getString(R.string.pref_address_key);
+        final String addr = sharedPref.getString(addr_key, "");
+        LatLng myLocation = getLocationFromAddress(this,addr);
+
 
         //will return 1 if granted permission or -1 if not
         // Assume thisActivity is the current activity
@@ -136,7 +163,34 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.alertcircle)));
 
         mMap.moveCamera(CameraUpdateFactory.zoomTo(20));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(fireAlarm));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
 
     }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
+
+        return p1;
+    }
+
 }
