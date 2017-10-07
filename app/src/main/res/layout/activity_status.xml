@@ -61,23 +61,50 @@
         android:text="Temperature" />
 
     <TextView
-        android:id="@+id/buildingStatus"
+        android:id="@+id/alerts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue"
-        android:text="Building Status"
+        android:layout_alignStart="@+id/temperature"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/temperature" />
+        android:text="Alerts"
+        android:textColor="@color/blue" />
 
     <TextView
-        android:id="@+id/fireDanger"
+        android:id="@+id/smokeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/buildingStatus"
-        android:layout_below="@+id/buildingStatus"
-        android:layout_marginTop="34dp"
-        android:textColor="@color/blue"
-        android:text="Fire Danger" />
+        android:text="null"
+        android:textColor="@color/okayGreen"
+        android:layout_above="@+id/carbonMonoxide"
+        android:layout_alignStart="@+id/coTV" />
+
+    <TextView
+        android:id="@+id/coTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="null"
+        android:textColor="@color/okayGreen"
+        android:layout_alignBaseline="@+id/carbonMonoxide"
+        android:layout_alignBottom="@+id/carbonMonoxide"
+        android:layout_toEndOf="@+id/StatusTitle" />
+
+    <TextView
+        android:id="@+id/tempTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/coTV"
+        android:layout_alignTop="@+id/temperature"
+        android:text="null"
+        android:textColor="@color/okayGreen" />
+
+    <TextView
+        android:id="@+id/alertsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tempTV"
+        android:layout_centerVertical="true"
+        android:text="null"
+        android:textColor="@color/okayGreen" />
 
 
 </RelativeLayout>
