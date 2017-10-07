@@ -21,17 +21,18 @@
 			else {
 				die("Error: ". $link->error);
 			}
-
+			
+			$result = array();
 			while ($query->fetch()) {
-				$result = array();
-				$result['time'] = $time;
-				$result['co'] = $co;
-				$result['temp'] = $temp;
-				$result['smoke'] = $smoke;
-				$result['sensor_id'] = $sid;
-
-				echo json_encode($result);
+				$result[] = array(
+					'sensor_id' => $sid,
+					'time' => $time,
+					'co' => $co,
+					'smoke' => $smoke,
+					'temp' => $temp
+				);
 			}
+			echo json_encode($result);
 
 			$query->close();
 	}
