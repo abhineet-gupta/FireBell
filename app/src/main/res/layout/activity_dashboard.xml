@@ -45,7 +45,8 @@
         android:layout_alignStart="@+id/buttonEmergency"
         android:layout_below="@+id/imageView"
         android:background="@color/steel"
-        android:text="Status" />
+        android:text="Status"
+        android:textColor="@color/sky" />
 
     <Button
         android:id="@+id/buttonEmergencies"
@@ -64,6 +65,7 @@
         android:background="@color/blue"
         android:text="News"
         android:layout_below="@+id/buttonStatus"
-        android:layout_alignStart="@+id/buttonStatus" />
+        android:layout_alignStart="@+id/buttonStatus"
+        android:layout_alignEnd="@+id/buttonEmergencies" />
 
 </RelativeLayout>
