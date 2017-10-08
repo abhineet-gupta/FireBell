@@ -2,21 +2,11 @@
    	include("connect.php");
 	$link=Connection();
 
-	$sid=$_GET["sensor_id"];
-	$limit=$_GET["limit"];
-
-	if ($query = $link->prepare
-			(
-			"SELECT `time`, `temp`, `co`, `smoke` 
-				FROM measurements 
-				WHERE s_id = ? 
-				ORDER BY m_id DESC LIMIT ?;"
-			)
-		)
+	if ($query = $link->prepare("SELECT * FROM latest_data;"))
 	{
-			$query->bind_param("ii", $sid, $limit);
 			if ($query->execute()){
-				$query->bind_result($time, $temp, $co, $smoke);
+				$query->bind_result(
+					$sid, $latitude, $longitude, $level, $temp, $co, $smoke, $time);
 			}
 			else {
 				die("Error: ". $link->error);
@@ -29,7 +19,10 @@
 					'time' => $time,
 					'co' => $co,
 					'smoke' => $smoke,
-					'temp' => $temp
+					'temp' => $temp,
+					'latitude' => $latitude,
+					'longitude' => $longitude,
+					'level' => $level
 				);
 			}
 			echo json_encode($result);
