@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
@@ -201,19 +200,11 @@ public class Status extends AppCompatActivity {
                         row.addView(sm);
 
                         table.addView(row);
-
                     }
                 }
-
-
-
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | ExecutionException | JSONException e) {
                 e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-        }
+            }
     }
 
     public class SensorData extends AsyncTask<String, Void, String> {

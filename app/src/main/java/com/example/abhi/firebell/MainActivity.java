@@ -20,15 +20,10 @@ public class MainActivity extends AppCompatActivity {
         final SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.pref_file_key), Context.MODE_PRIVATE);
 
-//        //Hardcode address for testing; TODO remove hardcoded address when updated
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putString(getString(R.string.pref_address_key), getString(R.string.default_address));
-//        editor.commit();
-
         final String addr_key = getString(R.string.pref_address_key);
         final String addr = sharedPref.getString(addr_key, "");
 
-        // If address is emtpy, prompt user to set it
+        // If address is empty, prompt user to set it
         if (addr.equals("")) {
             //final Intent mainIntent = new Intent(this, Dashboard.class);
             final Intent mainIntent = new Intent(this, SetAddress.class);

@@ -1,6 +1,5 @@
 package com.example.abhi.firebell;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -22,6 +20,7 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        // Populate bottom navigation bar
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -55,16 +54,7 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        Button btnEmergencies = findViewById(R.id.buttonEmergencies);
-        btnEmergencies.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                Intent emergenciesIntent = new Intent(Dashboard.this, Emergencies.class);
-                startActivity(emergenciesIntent);
-            }
-        });
-
+        // Visit news website when clicked
         Button fireNewsBtn = findViewById(R.id.fireNews);
         fireNewsBtn.setOnClickListener(new View.OnClickListener(){
 
@@ -78,13 +68,14 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        // Launch dialer with the emergency number populated
         final Button callEmergencyBtn = findViewById(R.id.buttonEmergency);
         callEmergencyBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 Intent callEmergencyInt = new Intent(Intent.ACTION_DIAL);
-                callEmergencyInt.setData(Uri.parse("tel:000"));
+                callEmergencyInt.setData(Uri.parse(getString(R.string.emergency_tel_link)));
                 startActivity(callEmergencyInt);
             }
         });

@@ -1,15 +1,12 @@
 package com.example.abhi.firebell;
 
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ButtonBarLayout;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,9 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
-
-    private TextView mTextMessage;
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -52,18 +46,12 @@ public class Settings extends AppCompatActivity {
         final SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.pref_file_key), Context.MODE_PRIVATE);
 
-//        //Hardcode address for testing; TODO remove hardcoded address when updated
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putString(getString(R.string.pref_address_key), getString(R.string.default_address));
-//        editor.commit();
-
         String addr_key = getString(R.string.pref_address_key);
         final String addr = sharedPref.getString(addr_key, "");
         TextView tv_addr = findViewById(R.id.textViewSettAddr);
         if (!addr.equals("")) {
             tv_addr.setText(addr);
         }
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +60,6 @@ public class Settings extends AppCompatActivity {
 
         // Get widgets from layout file
         final RelativeLayout rl = findViewById(R.id.content);
-        mTextMessage = findViewById(R.id.textViewSettAddrDescr);
         displayAddress();
 
         Switch switch_PushNotif = findViewById(R.id.switchSettPushNotf);
@@ -93,7 +80,6 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-
         // get shared preferences file for the switches in settings page.
         Context context = getApplicationContext();
         final SharedPreferences sharedPref = context.getSharedPreferences(
@@ -106,7 +92,6 @@ public class Settings extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     // If the switch button is on, test...
-                    // rl.setBackgroundColor(Color.parseColor("#FF80DFB0"));
 
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putBoolean(getString(R.string.pref_notifications_key), true);
@@ -118,18 +103,15 @@ public class Settings extends AppCompatActivity {
                 }
                 else {
                     // If the switch button is off, test ...
-                // rl.setBackgroundColor(Color.parseColor("#ed252f"));
-
                 SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(getString(R.string.pref_notifications_key), false);
-        editor.commit();
+                editor.putBoolean(getString(R.string.pref_notifications_key), false);
+                editor.commit();
 
-        // Show the switch button checked Status as toast message
-        Toast.makeText(getApplicationContext(),
-                "Push Notifications off", Toast.LENGTH_LONG).show();
-    }
-}
-        });
+                // Show the switch button checked Status as toast message
+                Toast.makeText(getApplicationContext(),
+                        "Push Notifications off", Toast.LENGTH_LONG).show();
+                }
+        }});
 
         //set alarms switch listener and update to storage
         switch_PhoneAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -138,8 +120,6 @@ public class Settings extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     // If the switch button is on, test...
-                    // rl.setBackgroundColor(Color.parseColor("#FF80DFB0"));
-
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putBoolean(getString(R.string.pref_alarm_key), true);
                     editor.commit();
@@ -150,8 +130,6 @@ public class Settings extends AppCompatActivity {
                 }
                 else {
                     // If the switch button is off, test ...
-                    // rl.setBackgroundColor(Color.parseColor("#ed252f"));
-
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putBoolean(getString(R.string.pref_alarm_key), false);
                     editor.commit();

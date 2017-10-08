@@ -19,7 +19,6 @@ public class SetAddress extends AppCompatActivity {
 
     public void setAddress(View view){
         // Get address typed by user
-        // TODO how to prevent command injection?
         EditText et_addr = findViewById(R.id.editTextSetAddress);
         String addr = et_addr.getText().toString();
 
@@ -32,10 +31,7 @@ public class SetAddress extends AppCompatActivity {
         editor.commit();
 
         final Intent mainIntent = new Intent(this, Dashboard.class);
-        //final Intent mainIntent = new Intent(this, Map.class);
-        //final Intent mainIntent = new Intent(this, SetAddress.class);
         startActivity(mainIntent);
-
         finish();
     }
 }

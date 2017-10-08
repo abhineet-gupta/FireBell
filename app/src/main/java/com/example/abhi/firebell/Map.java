@@ -15,8 +15,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,9 +25,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,11 +43,10 @@ public class Map extends FragmentActivity implements
         OnMyLocationButtonClickListener,
         OnMapReadyCallback {
 
-    //retreieve api endpoint
+    //retrieve api endpoint
     private String URL = "http://13.72.243.229/retrieve_loc.php";
     int MY_LOCATION_REQUEST_CODE = 10;
     private GoogleMap mMap;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +62,7 @@ public class Map extends FragmentActivity implements
         BottomNavigationView navigation =
                 findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
-
 
     //Bottom navigation control
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -94,8 +91,6 @@ public class Map extends FragmentActivity implements
 
     };
 
-
-
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
@@ -122,7 +117,7 @@ public class Map extends FragmentActivity implements
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
-        }else{
+        } else {
             //Request permission
 
             ActivityCompat.requestPermissions(this,
@@ -171,23 +166,17 @@ public class Map extends FragmentActivity implements
                 int smoke = alarm.getInt("smoke");
                 int carbonMonoxide = alarm.getInt("co");
                 int temperature = alarm.getInt("temp");
-                String time = (String) alarm.get("time");
 
                 //stores an alarm object in a list
                 alarms.add(new Alarm(sensor_id,latitude,longitude,smoke,level,temperature,carbonMonoxide));
 
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (InterruptedException | ExecutionException | JSONException e) {
             e.printStackTrace();
         }
 
         //Location data
         mMap.setOnMyLocationButtonClickListener(this);
-//        mMap.setOnMyLocationClickListener(this);
 
         //Creates the icons for the list
         for(int i = 0; i < alarms.size(); i++){
@@ -220,7 +209,6 @@ public class Map extends FragmentActivity implements
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
     }
 
-
     // Turn address into Lat and Long
     public static LatLng getLocationFromAddress(Context context, String strAddress) {
 
@@ -229,7 +217,6 @@ public class Map extends FragmentActivity implements
         LatLng p1 = null;
 
         try {
-            // May throw an IOException
             address = coder.getFromLocationName(strAddress, 5);
             if (address == null) {
                 return null;
@@ -241,10 +228,8 @@ public class Map extends FragmentActivity implements
             p1 = new LatLng(location.getLatitude(), location.getLongitude() );
 
         } catch (IOException ex) {
-
             ex.printStackTrace();
         }
-
         return p1;
     }
 
@@ -255,12 +240,9 @@ public class Map extends FragmentActivity implements
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
                 mMap.setMyLocationEnabled(true);
-            } else {
-                // Permission was denied. Display an error message.
             }
         }
     }
-
 
     //create Alarm object
     class Alarm{

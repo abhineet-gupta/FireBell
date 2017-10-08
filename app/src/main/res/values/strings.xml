@@ -22,4 +22,7 @@
     <string name="title_activity_map">Map</string>
     <string name="title_activity_status">status</string>
     <string name="SmokeJSONKey">smoke</string>
+    <string name="news_URL">http://www.mfb.vic.gov.au/News.html</string>
+    <string name="emergency_tel_link">tel:000</string>
+    <string name="retrieveURL">http://13.72.243.229/retrieve_loc.php</string>
 </resources>

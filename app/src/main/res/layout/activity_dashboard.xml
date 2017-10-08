@@ -26,17 +26,18 @@
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         app:srcCompat="@drawable/firebelllogo"
-        android:tint="@color/blue"/>
+        android:tint="@color/blue"
+        android:layout_alignEnd="@+id/buttonStatus" />
 
     <Button
         android:id="@+id/buttonEmergency"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
         android:background="@color/newSunset"
-        android:text="EMERGENCY SOS" />
+        android:text="EMERGENCY SOS"
+        android:layout_marginTop="107dp"
+        android:layout_below="@+id/buttonStatus"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/buttonStatus"
@@ -49,23 +50,15 @@
         android:textColor="@color/sky" />
 
     <Button
-        android:id="@+id/buttonEmergencies"
-        android:layout_width="145dp"
-        android:layout_height="145dp"
-        android:layout_alignEnd="@+id/buttonEmergency"
-        android:layout_below="@+id/imageView"
-        android:background="@color/sand"
-        android:text="Emergencies" />
-
-    <Button
         android:id="@+id/fireNews"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:background="@color/blue"
         android:text="News"
-        android:layout_below="@+id/buttonStatus"
-        android:layout_alignStart="@+id/buttonStatus"
-        android:layout_alignEnd="@+id/buttonEmergencies" />
+        android:layout_toEndOf="@+id/buttonStatus"
+        android:layout_marginStart="24dp"
+        android:layout_alignBottom="@+id/buttonStatus"
+        android:layout_below="@+id/imageView" /><!--android:layout_alignStart="@+id/buttonStatus"-->
+        <!--android:layout_alignEnd="@+id/buttonEmergencies" />-->
 
 </RelativeLayout>
