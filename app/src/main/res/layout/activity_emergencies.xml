@@ -37,6 +37,8 @@
         android:layout_alignStart="@+id/emergencyAlert"
         android:layout_below="@+id/emergencyAlert"
         android:layout_marginTop="45dp"
-        android:text="No emergencies present" />
+        android:text="Evacuate now!"
+        android:textColor="@color/warningRed"
+        android:textSize="24sp" />
 
 </RelativeLayout>
