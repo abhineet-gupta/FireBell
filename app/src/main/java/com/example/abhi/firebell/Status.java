@@ -30,8 +30,7 @@ public class Status extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -73,7 +72,7 @@ public class Status extends AppCompatActivity {
             JSONObject res1 = result_arr.getJSONObject(0);
             Log.d("JSON 1: ", res1.toString());
 
-            TextView smokeTV = (TextView) findViewById(R.id.smokeTV);
+            TextView smokeTV = findViewById(R.id.smokeTV);
             if (res1.getInt(getString(R.string.SmokeJSONKey)) == 1){
                 smokeTV.setText("Yes");
                 smokeTV.setTextColor(getResources().getColor(R.color.warningRed));
@@ -82,7 +81,7 @@ public class Status extends AppCompatActivity {
                 smokeTV.setTextColor(getResources().getColor(R.color.okayGreen));
             }
 
-            TextView coTV = (TextView) findViewById(R.id.coTV);
+            TextView coTV = findViewById(R.id.coTV);
             coTV.setText(Integer.toString(res1.getInt("co")));
             if (res1.getInt("co") > 4) {
                 coTV.setTextColor(getResources().getColor(R.color.warningRed));
@@ -90,10 +89,10 @@ public class Status extends AppCompatActivity {
                 coTV.setTextColor(getResources().getColor(R.color.okayGreen));
             }
 
-            TextView tempTV = (TextView) findViewById(R.id.tempTV);
+            TextView tempTV = findViewById(R.id.tempTV);
             tempTV.setText(res1.getString("temp"));
 
-            TextView alertTV = (TextView) findViewById(R.id.alertsTV);
+            TextView alertTV = findViewById(R.id.alertsTV);
             if (smokeTV.getText().equals("Yes") ||
                     Integer.parseInt(coTV.getText().toString()) > 4)
             {

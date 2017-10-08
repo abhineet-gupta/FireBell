@@ -20,7 +20,7 @@ public class SetAddress extends AppCompatActivity {
     public void setAddress(View view){
         // Get address typed by user
         // TODO how to prevent command injection?
-        EditText et_addr = (EditText) findViewById(R.id.editTextSetAddress);
+        EditText et_addr = findViewById(R.id.editTextSetAddress);
         String addr = et_addr.getText().toString();
 
         // Write to saved data

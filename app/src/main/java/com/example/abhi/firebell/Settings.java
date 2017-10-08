@@ -59,7 +59,7 @@ public class Settings extends AppCompatActivity {
 
         String addr_key = getString(R.string.pref_address_key);
         final String addr = sharedPref.getString(addr_key, "");
-        TextView tv_addr = (TextView) findViewById(R.id.textViewSettAddr);
+        TextView tv_addr = findViewById(R.id.textViewSettAddr);
         if (!addr.equals("")) {
             tv_addr.setText(addr);
         }
@@ -71,19 +71,19 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         // Get widgets from layout file
-        final RelativeLayout rl = (RelativeLayout) findViewById(R.id.content);
-        mTextMessage = (TextView) findViewById(R.id.textViewSettAddrDescr);
+        final RelativeLayout rl = findViewById(R.id.content);
+        mTextMessage = findViewById(R.id.textViewSettAddrDescr);
         displayAddress();
 
-        Switch switch_PushNotif = (Switch) findViewById(R.id.switchSettPushNotf);
-        Switch switch_PhoneAlarm = (Switch) findViewById(R.id.switchSettPhoneAlarm);
+        Switch switch_PushNotif = findViewById(R.id.switchSettPushNotf);
+        Switch switch_PhoneAlarm = findViewById(R.id.switchSettPhoneAlarm);
 
         BottomNavigationView navigation =
-                (BottomNavigationView) findViewById(R.id.bottom_navigation);
+                findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //set button click listener & update address in storage
-        Button btnUpdate = (Button) findViewById(R.id.btSettUpdate);
+        Button btnUpdate = findViewById(R.id.btSettUpdate);
         btnUpdate.setOnClickListener(new View.OnClickListener(){
 
             @Override

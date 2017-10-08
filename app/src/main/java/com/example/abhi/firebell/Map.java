@@ -15,6 +15,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -55,6 +57,7 @@ public class Map extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -62,7 +65,7 @@ public class Map extends FragmentActivity implements
 
 
         BottomNavigationView navigation =
-                (BottomNavigationView) findViewById(R.id.bottom_navigation);
+                findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // Step 1: grant permission
@@ -208,8 +211,7 @@ public class Map extends FragmentActivity implements
                 LatLng fireAlarm = new LatLng(smokeAlarm.latitude, smokeAlarm.longitude);
                 mMap.addMarker(new MarkerOptions()
                     .position(fireAlarm)
-                    .title("Temp: " + smokeAlarm.temperature + "\n" +
-                            "Level: " + smokeAlarm.level)
+                    .title("Temp: " + smokeAlarm.temperature + " Level: " + smokeAlarm.level)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.alertcircle)));
             }
             else {
