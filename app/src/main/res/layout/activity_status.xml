@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abhi.firebell.Status"
+    android:background="@color/sky">
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/newOrange"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_main" />
+
+    <TextView
+        android:id="@+id/StatusTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="25dp"
+        android:text="Status"
+        android:textColor="@color/blue"
+        android:textSize="25pt"/>
+
+    <TextView
+        android:id="@+id/smokeDetection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/StatusTitle"
+        android:layout_below="@+id/StatusTitle"
+        android:layout_marginTop="55dp"
+        android:textColor="@color/blue"
+        android:text="Smoke" />
+
+    <TextView
+        android:id="@+id/carbonMonoxide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/smokeDetection"
+        android:layout_below="@+id/smokeDetection"
+        android:layout_marginTop="27dp"
+        android:textColor="@color/blue"
+        android:text="Carbon Monoxide" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/carbonMonoxide"
+        android:layout_below="@+id/carbonMonoxide"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/blue"
+        android:text="Temperature" />
+
+    <TextView
+        android:id="@+id/alerts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/temperature"
+        android:layout_centerVertical="true"
+        android:text="Alerts"
+        android:textColor="@color/blue" />
+
+    <TextView
+        android:id="@+id/smokeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="null"
+        android:textColor="@color/okayGreen"
+        android:layout_above="@+id/carbonMonoxide"
+        android:layout_alignStart="@+id/coTV" />
+
+    <TextView
+        android:id="@+id/coTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="null"
+        android:textColor="@color/okayGreen"
+        android:layout_alignBaseline="@+id/carbonMonoxide"
+        android:layout_alignBottom="@+id/carbonMonoxide"
+        android:layout_toEndOf="@+id/StatusTitle" />
+
+    <TextView
+        android:id="@+id/tempTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/coTV"
+        android:layout_alignTop="@+id/temperature"
+        android:text="null"
+        android:textColor="@color/okayGreen" />
+
+    <TextView
+        android:id="@+id/alertsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tempTV"
+        android:layout_centerVertical="true"
+        android:text="null"
+        android:textColor="@color/okayGreen" />
+
+
+</RelativeLayout>

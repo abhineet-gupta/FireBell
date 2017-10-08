@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abhi.firebell.SetAddress"
+    android:background="@color/sand">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/firebelllicon"
+        android:id="@+id/imageViewSetAddressLogo"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:tint="@color/white"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/setAddressButton"
+        android:layout_width="296dp"
+        android:layout_height="67dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp"
+        android:background="@color/blue"
+        android:onClick="setAddress"
+        android:text="@string/set_address_button_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#ffffff"
+        android:textColorHighlight="#d8d8d8"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="352dp" />
+
+    <EditText
+        android:id="@+id/editTextSetAddress"
+        android:layout_width="296dp"
+        android:layout_height="67dp"
+        android:layout_alignStart="@+id/setAddressButton"
+        android:layout_below="@+id/imageViewSetAddressLogo"
+        android:layout_marginTop="59dp"
+        android:ems="10"
+        android:hint="Enter Detector ID"
+        android:inputType="textNoSuggestions"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="269dp" />
+
+</RelativeLayout>

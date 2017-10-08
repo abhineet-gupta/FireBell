@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sky">
+
+    <!-- Content Container -->
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/newOrange"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_main" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/firebelllogo"
+        android:tint="@color/blue"/>
+
+    <Button
+        android:id="@+id/buttonEmergency"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:background="@color/newSunset"
+        android:text="EMERGENCY SOS" />
+
+    <Button
+        android:id="@+id/buttonStatus"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_alignStart="@+id/buttonEmergency"
+        android:layout_below="@+id/imageView"
+        android:background="@color/steel"
+        android:text="Status" />
+
+    <Button
+        android:id="@+id/buttonEmergencies"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_alignEnd="@+id/buttonEmergency"
+        android:layout_below="@+id/imageView"
+        android:background="@color/sand"
+        android:text="Emergencies" />
+
+    <Button
+        android:id="@+id/fireNews"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/blue"
+        android:text="News"
+        android:layout_below="@+id/buttonStatus"
+        android:layout_alignStart="@+id/buttonStatus" />
+
+</RelativeLayout>

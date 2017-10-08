@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/steel">
+    tools:context="com.example.abhi.firebell.Settings">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textViewSettAddrDescr"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/setting_address_desc" />
+
+        <TextView
+            android:id="@+id/textViewSettAddr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textViewSettAddrDescr"
+            android:layout_alignStart="@+id/textViewSettAddrDescr"
+            android:layout_below="@+id/textViewSettAddrDescr"
+            android:text="@string/setting_address_placeholder"
+            android:textColor="@android:color/holo_orange_dark" />
+
+
+        <Button
+            android:id="@+id/btSettUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="22dp"
+            android:background="@color/sand"
+            android:text="@string/setting_button_text"
+            android:layout_above="@+id/textViewSettPushNotf"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/textViewSettPushNotf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textViewSettAddr"
+            android:layout_alignStart="@+id/textViewSettAddr"
+            android:layout_below="@+id/textViewSettAddr"
+            android:layout_marginTop="47dp"
+            android:text="@string/settings_push_notf" />
+
+        <TextView
+            android:id="@+id/textViewSettPhoneAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textViewSettPushNotf"
+            android:layout_below="@+id/switchSettPushNotf"
+            android:layout_marginTop="32dp"
+            android:text="@string/sett_phone_alarm" />
+
+        <Switch
+            android:id="@+id/switchSettPushNotf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btSettUpdate"
+            android:layout_alignTop="@+id/textViewSettPushNotf" />
+
+        <Switch
+            android:id="@+id/switchSettPhoneAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/switchSettPushNotf"
+            android:layout_alignTop="@+id/textViewSettPhoneAlarm" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/newOrange"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_main" />
+
+</LinearLayout>
