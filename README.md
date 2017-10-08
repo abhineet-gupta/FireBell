@@ -23,3 +23,8 @@ The app can also be used to read local fire news or make an emergency call.
 The Firebell system thus helps prevent mistakes of the past by tracking the present to `enable active decision-making for a safer future`.
 
 ---
+
+Companion video:
+https://www.youtube.com/watch?v=3GxMMWGlnC0
+
+[![Companion YouTube video](https://www.youtube.com/watch?v=3GxMMWGlnC0/0.jpg)](https://www.youtube.com/watch?v=3GxMMWGlnC0)
