@@ -27,11 +27,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,17 +39,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-//import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
-
 public class Map extends FragmentActivity implements
         OnMyLocationButtonClickListener,
-//        OnMyLocationClickListener,
         OnMapReadyCallback {
 
+    //retreieve api endpoint
     private String URL = "http://13.72.243.229/retrieve_loc.php";
-
     int MY_LOCATION_REQUEST_CODE = 10;
     private GoogleMap mMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +59,11 @@ public class Map extends FragmentActivity implements
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
+        //retrieve bottom navigation
         BottomNavigationView navigation =
                 findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        // Step 1: grant permission
-
-        //Step 2: Get data
-
-
-        //Step 3: display
     }
 
 
@@ -114,11 +104,6 @@ public class Map extends FragmentActivity implements
         return false;
     }
 
-//    @Override
-//    public void onMyLocationClick(@NonNull Location location) {
-//        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
-//    }
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -129,12 +114,10 @@ public class Map extends FragmentActivity implements
      * installed Google Play services and returned to the app.
      */
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Step 1: Get the permission data
         //Get permission to display the users location data
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -149,6 +132,7 @@ public class Map extends FragmentActivity implements
         }
 
         // Get stored address if it exists in storage
+
         Context context = getApplicationContext();
         final SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.pref_file_key), Context.MODE_PRIVATE);
@@ -157,8 +141,7 @@ public class Map extends FragmentActivity implements
         LatLng myLocation = getLocationFromAddress(this,addr);
 
 
-//        Retreieve location data from server
-
+        //Retreieve location data from server and store in alarms
 
         //instantiate alarms list from server
         List<Alarm> alarms = new ArrayList<Alarm>();
@@ -171,12 +154,16 @@ public class Map extends FragmentActivity implements
 
         //Perform the doInBackground method, passing in our url
         try {
+            //gets JSON data from server
             result = getRequest.execute(URL).get();
+            //parse as JSONArray
             JSONArray alarmList = new JSONArray(result);
-            System.out.println("Length: " + alarmList.length());
-            for(int i = 0; i < alarmList.length(); i++){
 
+            for(int i = 0; i < alarmList.length(); i++){
+                 //creates JSON object for each alarm
                 JSONObject alarm = alarmList.getJSONObject(i);
+
+                //set alarm variables
                 int sensor_id = alarm.getInt("sensor_id");
                 double latitude = alarm.getDouble("latitude");
                 double longitude = alarm.getDouble("longitude");
@@ -186,6 +173,7 @@ public class Map extends FragmentActivity implements
                 int temperature = alarm.getInt("temp");
                 String time = (String) alarm.get("time");
 
+                //stores an alarm object in a list
                 alarms.add(new Alarm(sensor_id,latitude,longitude,smoke,level,temperature,carbonMonoxide));
 
             }
@@ -226,12 +214,14 @@ public class Map extends FragmentActivity implements
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.normalcircle)));
             }
         }
+
+        //sets google maps zoom and centres map on current position
         mMap.moveCamera(CameraUpdateFactory.zoomTo(20));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
     }
 
 
-
+    // Turn address into Lat and Long
     public static LatLng getLocationFromAddress(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
@@ -258,6 +248,7 @@ public class Map extends FragmentActivity implements
         return p1;
     }
 
+    //request permission
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
@@ -270,6 +261,8 @@ public class Map extends FragmentActivity implements
         }
     }
 
+
+    //create Alarm object
     class Alarm{
         int index;
         double longitude;
@@ -290,6 +283,7 @@ public class Map extends FragmentActivity implements
         }
     }
 
+    //request to server to get information about alarms
     public class SensorData extends AsyncTask<String, Void, String> {
         public static final String REQUEST_METHOD = "GET";
         public static final int READ_TIMEOUT = 15000;
