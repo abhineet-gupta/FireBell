@@ -30,81 +30,28 @@
         android:textColor="@color/blue"
         android:textSize="25pt"/>
 
-    <TextView
-        android:id="@+id/smokeDetection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/StatusTitle"
+    <ScrollView
+        android:id="@+id/sensorScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:fillViewport="false"
+        android:scrollbars="none"
         android:layout_below="@+id/StatusTitle"
-        android:layout_marginTop="55dp"
-        android:textColor="@color/blue"
-        android:text="Smoke" />
+        android:layout_alignStart="@+id/StatusTitle"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="90dp"
+        android:layout_alignEnd="@+id/bottom_navigation">
 
-    <TextView
-        android:id="@+id/carbonMonoxide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/smokeDetection"
-        android:layout_below="@+id/smokeDetection"
-        android:layout_marginTop="27dp"
-        android:textColor="@color/blue"
-        android:text="Carbon Monoxide" />
-
-    <TextView
-        android:id="@+id/temperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/carbonMonoxide"
-        android:layout_below="@+id/carbonMonoxide"
-        android:layout_marginTop="28dp"
-        android:textColor="@color/blue"
-        android:text="Temperature" />
-
-    <TextView
-        android:id="@+id/alerts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/temperature"
-        android:layout_centerVertical="true"
-        android:text="Alerts"
-        android:textColor="@color/blue" />
-
-    <TextView
-        android:id="@+id/smokeTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="null"
-        android:textColor="@color/okayGreen"
-        android:layout_above="@+id/carbonMonoxide"
-        android:layout_alignStart="@+id/coTV" />
-
-    <TextView
-        android:id="@+id/coTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="null"
-        android:textColor="@color/okayGreen"
-        android:layout_alignBaseline="@+id/carbonMonoxide"
-        android:layout_alignBottom="@+id/carbonMonoxide"
-        android:layout_toEndOf="@+id/StatusTitle" />
-
-    <TextView
-        android:id="@+id/tempTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/coTV"
-        android:layout_alignTop="@+id/temperature"
-        android:text="null"
-        android:textColor="@color/okayGreen" />
-
-    <TextView
-        android:id="@+id/alertsTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tempTV"
-        android:layout_centerVertical="true"
-        android:text="null"
-        android:textColor="@color/okayGreen" />
-
+        <TableLayout
+            android:id="@+id/sensor_data_table1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--android:layout_alignStart="@+id/StatusTitle"-->
+            <!--android:layout_below="@+id/StatusTitle">-->
+        </TableLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -211,14 +211,18 @@ public class Map extends FragmentActivity implements
                 LatLng fireAlarm = new LatLng(smokeAlarm.latitude, smokeAlarm.longitude);
                 mMap.addMarker(new MarkerOptions()
                     .position(fireAlarm)
-                    .title("Temp: " + smokeAlarm.temperature + " Level: " + smokeAlarm.level)
+                    .title("ID: " + smokeAlarm.index +
+                            " Temp: " + smokeAlarm.temperature +
+                            " Level: " + smokeAlarm.level)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.alertcircle)));
             }
             else {
                 LatLng fireAlarm = new LatLng(smokeAlarm.latitude, smokeAlarm.longitude);
                 mMap.addMarker(new MarkerOptions()
                         .position(fireAlarm)
-                        .title("Temperature: " + smokeAlarm.temperature + " Level: " + smokeAlarm.level)
+                        .title("ID: " + smokeAlarm.index +
+                                " Temp: " + smokeAlarm.temperature +
+                                " Level: " + smokeAlarm.level)
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.normalcircle)));
             }
         }
