@@ -9,6 +9,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.Api;
@@ -30,20 +32,34 @@ import com.google.android.gms.maps.model.MarkerOptions;
 //import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.R.attr.data;
+import static android.R.attr.name;
+import static android.R.id.list;
+import static android.media.CamcorderProfile.get;
+import static com.example.abhi.firebell.R.drawable.alert;
+import static com.example.abhi.firebell.R.id.temperature;
 
 public class Map extends FragmentActivity implements
         OnMyLocationButtonClickListener,
 //        OnMyLocationClickListener,
         OnMapReadyCallback {
 
+    private String URL = "http://13.72.243.229/retrieve_loc.php";
 
     int MY_LOCATION_REQUEST_CODE = 10;
     private GoogleMap mMap;
@@ -65,6 +81,8 @@ public class Map extends FragmentActivity implements
         // Step 1: grant permission
 
         //Step 2: Get data
+
+
         //Step 3: display
     }
 
@@ -149,22 +167,68 @@ public class Map extends FragmentActivity implements
         LatLng myLocation = getLocationFromAddress(this,addr);
 
 
+//        Retreieve location data from server
+
+
+        //instantiate alarms list from server
+        List<Alarm> alarms = new ArrayList<Alarm>();
+
+        //String to place our result in
+        String result;
+
+        //Instantiate new instance of our class
+        SensorData getRequest = new SensorData();
+
+        //Perform the doInBackground method, passing in our url
+        try {
+            result = getRequest.execute(URL).get();
+            JSONArray alarmList = new JSONArray(result);
+            System.out.println("Length: " + alarmList.length());
+            for(int i = 0; i < alarmList.length(); i++){
+
+                JSONObject alarm = alarmList.getJSONObject(i);
+                int sensor_id = alarm.getInt("sensor_id");
+                double latitude = alarm.getDouble("latitude");
+                double longitude = alarm.getDouble("longitude");
+                int level = alarm.getInt("level");
+                int smoke = alarm.getInt("smoke");
+                int carbonMonoxide = alarm.getInt("co");
+                int temperature = alarm.getInt("temp");
+                String time = (String) alarm.get("time");
+
+                alarms.add(new Alarm(sensor_id,latitude,longitude,smoke,level,temperature,carbonMonoxide));
+
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         //Location data
         mMap.setOnMyLocationButtonClickListener(this);
 //        mMap.setOnMyLocationClickListener(this);
 
-        // Add a marker in Sydney and move the camera
-        LatLng fireAlarm = new LatLng(-37.856461, 144.998083);
-        mMap.addMarker(new MarkerOptions()
-                .position(fireAlarm)
-                .title("Marker in Sydney")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.alertcircle)));
+        //Creates the icons for the list
+        for(int i = 0; i < alarms.size(); i++){
+            Alarm smokeAlarm = alarms.get(i);
+            if(smokeAlarm.smoke == 1){
+                LatLng fireAlarm = new LatLng(smokeAlarm.latitude, smokeAlarm.longitude);
+                mMap.addMarker(new MarkerOptions()
+                    .position(fireAlarm)
+                    .title("Temperature: " + smokeAlarm.temperature + " Level: " + smokeAlarm.level)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.alertcircle)));
+            }
+        }
 
         mMap.moveCamera(CameraUpdateFactory.zoomTo(20));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
 
     }
+
+
 
     public LatLng getLocationFromAddress(Context context, String strAddress) {
 
@@ -201,6 +265,82 @@ public class Map extends FragmentActivity implements
             } else {
                 // Permission was denied. Display an error message.
             }
+        }
+    }
+
+    class Alarm{
+        int index;
+        double longitude;
+        double latitude;
+        int smoke;
+        int temperature;
+        int carbonMonoxide;
+        int level;
+
+        Alarm(int index,double latitude,double longitude, int smoke, int level, int temperature, int carbonMonoxide){
+            this.index = index;
+            this.longitude = longitude;
+            this.latitude = latitude;
+            this.smoke = smoke;
+            this.level = level;
+            this.temperature =temperature;
+            this.carbonMonoxide = carbonMonoxide;
+        }
+    }
+
+    public class SensorData extends AsyncTask<String, Void, String> {
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+
+        @Override
+        protected String doInBackground(String... params){
+            String stringUrl = params[0];
+            String result;
+            String inputLine;
+
+            try {
+                //Create a URL object holding our url
+                URL myUrl = new URL(stringUrl);
+
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection)
+                        myUrl.openConnection();
+                //Set methods and timeouts
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();
+
+                //Create a new InputStreamReader
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+
+                //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+            }
+            catch(IOException e){
+                e.printStackTrace();
+                result = null;
+            }
+            return result;
+        }
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
         }
     }
 }
