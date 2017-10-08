@@ -32,7 +32,7 @@ import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 public class Status extends AppCompatActivity {
-    private String URL = "http://13.72.243.229/retrieve_loc.php";
+    private String URL;
     private Integer INFO_RADIUS_METRES = 40;
 
     @Override
@@ -40,6 +40,7 @@ public class Status extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
+        URL = getString(R.string.retrieveURL);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(

@@ -44,7 +44,7 @@ public class Map extends FragmentActivity implements
         OnMapReadyCallback {
 
     //retrieve api endpoint
-    private String URL = "http://13.72.243.229/retrieve_loc.php";
+    private String URL;
     int MY_LOCATION_REQUEST_CODE = 10;
     private GoogleMap mMap;
 
@@ -53,6 +53,7 @@ public class Map extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        URL = getString(R.string.retrieveURL);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

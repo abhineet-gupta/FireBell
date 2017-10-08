@@ -12,12 +12,14 @@ import android.widget.Button;
 
 public class Dashboard extends AppCompatActivity {
 
-    private String NEWS_URL = "http://www.mfb.vic.gov.au/News.html";
+    private String NEWS_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        NEWS_URL = getString(R.string.news_URL);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Populate bottom navigation bar
