@@ -201,18 +201,27 @@ public class Map extends FragmentActivity implements
         //Creates the icons for the list
         for(int i = 0; i < alarms.size(); i++){
             Alarm smokeAlarm = alarms.get(i);
-            if(smokeAlarm.smoke == 1){
+            if(smokeAlarm.smoke == 1 ||
+                    smokeAlarm.carbonMonoxide >= 5 ||
+                    smokeAlarm.temperature >= 50)
+            {
                 LatLng fireAlarm = new LatLng(smokeAlarm.latitude, smokeAlarm.longitude);
                 mMap.addMarker(new MarkerOptions()
                     .position(fireAlarm)
-                    .title("Temperature: " + smokeAlarm.temperature + " Level: " + smokeAlarm.level)
+                    .title("Temp: " + smokeAlarm.temperature + "\n" +
+                            "Level: " + smokeAlarm.level)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.alertcircle)));
             }
+            else {
+                LatLng fireAlarm = new LatLng(smokeAlarm.latitude, smokeAlarm.longitude);
+                mMap.addMarker(new MarkerOptions()
+                        .position(fireAlarm)
+                        .title("Temperature: " + smokeAlarm.temperature + " Level: " + smokeAlarm.level)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.normalcircle)));
+            }
         }
-
         mMap.moveCamera(CameraUpdateFactory.zoomTo(20));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
-
     }
 
 
