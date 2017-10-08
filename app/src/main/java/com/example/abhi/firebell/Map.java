@@ -232,7 +232,7 @@ public class Map extends FragmentActivity implements
 
 
 
-    public LatLng getLocationFromAddress(Context context, String strAddress) {
+    public static LatLng getLocationFromAddress(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
         List<Address> address;

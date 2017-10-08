@@ -1,7 +1,10 @@
 package com.example.abhi.firebell;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -16,6 +19,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +34,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Status extends AppCompatActivity {
     private String URL = "http://13.72.243.229/retrieve_loc.php";
+    private Integer INFO_RADIUS_METRES = 40;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,13 +97,6 @@ public class Status extends AppCompatActivity {
                 label_sensorID.setPadding(20, 5, 5, 5);
                 tr_head.addView(label_sensorID);
 
-//                TextView label_time = new TextView(this);
-//                label_time.setText("Time");
-//                label_time.setTextColor(Color.WHITE);
-//                label_time.setTextSize(16);
-//                label_time.setPadding(20, 5, 5, 5);
-//                tr_head.addView(label_time);
-
                 TextView label_temp = new TextView(this);
                 label_temp.setText("Temp (C)");
                 label_temp.setTextColor(Color.WHITE);
@@ -121,74 +120,89 @@ public class Status extends AppCompatActivity {
 
                 table.addView(tr_head);
 
+                Context context = getApplicationContext();
+                final SharedPreferences sharedPref = context.getSharedPreferences(
+                        getString(R.string.pref_file_key), Context.MODE_PRIVATE);
+                String addr_key = getString(R.string.pref_address_key);
+                final String addr = sharedPref.getString(addr_key, "");
+                LatLng myLocation = Map.getLocationFromAddress(this,addr);
+                Location loc = new Location("");
+
+                loc.setLatitude(myLocation.latitude);
+                loc.setLongitude(myLocation.longitude);
+
                 for (int i = 0; i < result_arr.length(); i++){
                     JSONObject rowJ = result_arr.getJSONObject(i);
 
-                    TableRow row = new TableRow(this);
-                    row.setBackgroundColor(Color.WHITE);
-                    row.setLayoutParams(new AppBarLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                    ));
+                    Double s_lat = Double.parseDouble(rowJ.getString("latitude"));
+                    Double s_long = Double.parseDouble(rowJ.getString("longitude"));
+                    Location s_loc = new Location("");
+                    s_loc.setLongitude(s_long);
+                    s_loc.setLatitude(s_lat);
 
-                    TextView devID = new TextView(this);
-                    devID.setText(rowJ.getString("sensor_id"));
-                    devID.setTextColor(Color.BLACK);
-                    devID.setTextSize(16);
-                    devID.setPadding(20, 5, 5, 5);
-                    row.addView(devID);
+                    Float dist = s_loc.distanceTo(loc);
+                    Log.d("Distance: ", dist.toString());
 
-//                    TextView time = new TextView(this);
-//                    time.setText(rowJ.getString("time"));
-//                    time.setTextColor(Color.BLACK);
-//                    time.setTextSize(16);
-//                    time.setPadding(20, 5, 5, 5);
-//                    row.addView(time);
+                    if (dist <= INFO_RADIUS_METRES){
+                        TableRow row = new TableRow(this);
+                        row.setBackgroundColor(Color.WHITE);
+                        row.setLayoutParams(new AppBarLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                        ));
 
-                    TextView temp = new TextView(this);
-                    Double temperature = rowJ.getDouble("temp");
-                    if (temperature > 50){
-                        temp.setTextColor(Color.RED);
-                        row.setBackgroundColor(Color.LTGRAY);
-                    } else {
-                        temp.setTextColor(Color.BLACK);
+                        TextView devID = new TextView(this);
+                        devID.setText(rowJ.getString("sensor_id"));
+                        devID.setTextColor(Color.BLACK);
+                        devID.setTextSize(16);
+                        devID.setPadding(20, 5, 5, 5);
+                        row.addView(devID);
+
+                        TextView temp = new TextView(this);
+                        Double temperature = rowJ.getDouble("temp");
+                        if (temperature > 50){
+                            temp.setTextColor(Color.RED);
+                            row.setBackgroundColor(Color.LTGRAY);
+                        } else {
+                            temp.setTextColor(Color.BLACK);
+                        }
+                        temp.setText(temperature.toString());
+                        temp.setTextSize(16);
+                        temp.setPadding(20, 5, 5, 5);
+                        row.addView(temp);
+
+                        TextView co = new TextView(this);
+                        Integer coxide = rowJ.getInt("co");
+                        if (coxide >= 5){
+                            co.setTextColor(Color.RED);
+                            row.setBackgroundColor(Color.LTGRAY);
+                        } else {
+                            co.setTextColor(Color.BLACK);
+                        }
+                        co.setText(coxide.toString());
+                        co.setTextSize(16);
+                        co.setPadding(20, 5, 5, 5);
+                        row.addView(co);
+
+                        TextView sm = new TextView(this);
+                        Integer smoke = rowJ.getInt("smoke");
+                        if (smoke == 1) {
+                            sm.setText("Yes!");
+                            sm.setTextColor(Color.RED);
+                            row.setBackgroundColor(Color.LTGRAY);
+                        }
+                        else {
+                            sm.setText("No");
+                            sm.setTextColor(Color.BLACK);
+                        }
+
+                        sm.setTextSize(16);
+                        sm.setPadding(20, 5, 5, 5);
+                        row.addView(sm);
+
+                        table.addView(row);
+
                     }
-                    temp.setText(temperature.toString());
-                    temp.setTextSize(16);
-                    temp.setPadding(20, 5, 5, 5);
-                    row.addView(temp);
-
-                    TextView co = new TextView(this);
-                    Integer coxide = rowJ.getInt("co");
-                    if (coxide >= 5){
-                        co.setTextColor(Color.RED);
-                        row.setBackgroundColor(Color.LTGRAY);
-                    } else {
-                        co.setTextColor(Color.BLACK);
-                    }
-                    co.setText(coxide.toString());
-                    co.setTextSize(16);
-                    co.setPadding(20, 5, 5, 5);
-                    row.addView(co);
-
-                    TextView sm = new TextView(this);
-                    Integer smoke = rowJ.getInt("smoke");
-                    if (smoke == 1) {
-                        sm.setText("Yes!");
-                        sm.setTextColor(Color.RED);
-                        row.setBackgroundColor(Color.LTGRAY);
-                    }
-                    else {
-                        sm.setText("No");
-                        sm.setTextColor(Color.BLACK);
-                    }
-
-                    sm.setTextSize(16);
-                    sm.setPadding(20, 5, 5, 5);
-                    row.addView(sm);
-
-                    table.addView(row);
-
                 }
 
 
