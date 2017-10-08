@@ -27,4 +27,4 @@ The Firebell system thus helps prevent mistakes of the past by tracking the pres
 Companion video:
 https://www.youtube.com/watch?v=3GxMMWGlnC0
 
-[![Companion YouTube video](https://www.youtube.com/watch?v=3GxMMWGlnC0/0.jpg)](https://www.youtube.com/watch?v=3GxMMWGlnC0)
+[![Companion YouTube video](https://img.youtube.com/vi/3GxMMWGlnC0/0.jpg)](https://www.youtube.com/watch?v=3GxMMWGlnC0)
